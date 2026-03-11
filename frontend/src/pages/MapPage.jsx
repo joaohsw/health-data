@@ -319,27 +319,6 @@ export default function MapPage() {
           </div>
         )}
       </div>
-
-      {/* Legend */}
-      {mapStats && view === 'world' && (
-        <div className="card" style={{ padding: '12px 20px', marginTop: '12px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span style={{ fontSize: '0.733rem', color: 'var(--text-muted)' }}>
-            {Number(mapStats.min).toLocaleString('pt-BR', { maximumFractionDigits: 0 })}
-          </span>
-          <div style={{
-            flex: 1,
-            height: '8px',
-            borderRadius: '4px',
-            background: 'linear-gradient(to right, #374151, #6b7280, #e5e7eb)',
-          }} />
-          <span style={{ fontSize: '0.733rem', color: 'var(--text-muted)' }}>
-            {Number(mapStats.max).toLocaleString('pt-BR', { maximumFractionDigits: 0 })}
-          </span>
-          <span style={{ fontSize: '0.667rem', color: 'var(--text-muted)', borderLeft: '1px solid var(--border-default)', paddingLeft: '8px' }}>
-            {currentIndicator?.unit || ''}
-          </span>
-        </div>
-      )}
     </div>
   );
 }

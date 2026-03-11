@@ -68,7 +68,7 @@ function BrazilMap({ data, onStateClick, onBack }) {
         projectionConfig={{ scale: 600, center: [-52, -15] }}
         style={{ width: '100%', height: '100%', background: 'transparent' }}
       >
-        <ZoomableGroup>
+        <ZoomableGroup translateExtent={[[-100, -100], [900, 700]]} minZoom={1} maxZoom={5}>
           <Geographies geography={BRAZIL_GEO_URL}>
             {({ geographies }) =>
               geographies.map((geo) => {

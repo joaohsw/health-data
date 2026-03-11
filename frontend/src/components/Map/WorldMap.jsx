@@ -45,7 +45,7 @@ function WorldMap({ mapData, onCountryClick, onBrazilClick, stats }) {
         projectionConfig={{ scale: 120, center: [0, 30] }}
         style={{ width: '100%', height: '100%', background: 'transparent' }}
       >
-        <ZoomableGroup>
+        <ZoomableGroup translateExtent={[[-200, -100], [1000, 600]]} minZoom={1} maxZoom={5}>
           <Geographies geography={WORLD_GEO_URL}>
             {({ geographies }) =>
               geographies.map((geo) => {
