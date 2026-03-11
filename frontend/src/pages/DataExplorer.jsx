@@ -202,32 +202,32 @@ export default function DataExplorer() {
             <h4 style={{ fontSize: '0.7rem', fontWeight: 500, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '12px' }}>
               Filtros — DATASUS
             </h4>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '8px' }}>
-              <div className="table-filter">
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              <div className="table-filter" style={{ flex: '1 1 180px', maxWidth: '280px' }}>
                 <select value={filters.category_id} onChange={(e) => { handleFilterChange('category_id', e.target.value); handleFilterChange('indicator_id', ''); }}>
                   <option value="">Todas as categorias</option>
                   {categories.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
                 </select>
               </div>
-              <div className="table-filter">
+              <div className="table-filter" style={{ flex: '1 1 200px', maxWidth: '300px' }}>
                 <select value={filters.indicator_id} onChange={(e) => handleFilterChange('indicator_id', e.target.value)}>
                   <option value="">Todos os indicadores</option>
                   {filteredIndicators.map(ind => <option key={ind.id} value={ind.id}>{ind.name}</option>)}
                 </select>
               </div>
-              <div className="table-filter">
+              <div className="table-filter" style={{ flex: '1 1 120px', maxWidth: '160px' }}>
                 <select value={filters.state} onChange={(e) => handleFilterChange('state', e.target.value)}>
                   <option value="">Todos os estados</option>
                   {STATES.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
               </div>
-              <div className="table-filter">
+              <div className="table-filter" style={{ flex: '1 1 120px', maxWidth: '160px' }}>
                 <select value={filters.year_from} onChange={(e) => handleFilterChange('year_from', e.target.value)}>
                   <option value="">Ano inicio</option>
                   {Array.from({ length: 9 }, (_, i) => 2015 + i).map(y => <option key={y} value={y}>{y}</option>)}
                 </select>
               </div>
-              <div className="table-filter">
+              <div className="table-filter" style={{ flex: '1 1 120px', maxWidth: '160px' }}>
                 <select value={filters.year_to} onChange={(e) => handleFilterChange('year_to', e.target.value)}>
                   <option value="">Ano fim</option>
                   {Array.from({ length: 9 }, (_, i) => 2015 + i).map(y => <option key={y} value={y}>{y}</option>)}
@@ -267,20 +267,20 @@ export default function DataExplorer() {
             <h4 style={{ fontSize: '0.7rem', fontWeight: 500, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '12px' }}>
               Filtros — OMS (WHO)
             </h4>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '8px' }}>
-              <div className="table-filter">
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              <div className="table-filter" style={{ flex: '1 1 200px', maxWidth: '300px' }}>
                 <select value={worldFilters.indicator_id} onChange={(e) => handleWorldFilterChange('indicator_id', e.target.value)}>
                   <option value="">Todos os indicadores</option>
                   {worldIndicators.map(ind => <option key={ind.id} value={ind.id}>{ind.name_pt || ind.name}</option>)}
                 </select>
               </div>
-              <div className="table-filter">
+              <div className="table-filter" style={{ flex: '1 1 120px', maxWidth: '160px' }}>
                 <select value={worldFilters.year_from} onChange={(e) => handleWorldFilterChange('year_from', e.target.value)}>
                   <option value="">Ano inicio</option>
                   {Array.from({ length: 14 }, (_, i) => 2010 + i).map(y => <option key={y} value={y}>{y}</option>)}
                 </select>
               </div>
-              <div className="table-filter">
+              <div className="table-filter" style={{ flex: '1 1 120px', maxWidth: '160px' }}>
                 <select value={worldFilters.year_to} onChange={(e) => handleWorldFilterChange('year_to', e.target.value)}>
                   <option value="">Ano fim</option>
                   {Array.from({ length: 14 }, (_, i) => 2010 + i).map(y => <option key={y} value={y}>{y}</option>)}
