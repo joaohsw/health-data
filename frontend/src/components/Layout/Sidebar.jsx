@@ -1,21 +1,21 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getCategories } from '../../api/client';
+import { getCategories, getWorldIndicators } from '../../api/client';
 
 export default function Sidebar() {
   const [categories, setCategories] = useState([]);
+  const [worldIndicators, setWorldIndicators] = useState([]);
   const location = useLocation();
 
   useEffect(() => {
-    getCategories()
-      .then(setCategories)
-      .catch(() => setCategories([]));
+    getCategories().then(setCategories).catch(() => setCategories([]));
+    getWorldIndicators().then(setWorldIndicators).catch(() => setWorldIndicators([]));
   }, []);
 
   return (
     <aside className="sidebar">
       <div>
-        <h4 className="sidebar-section-title">Navegação</h4>
+        <h4 className="sidebar-section-title">Navegacao</h4>
         <nav className="sidebar-nav">
           <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
             <span className="nav-icon">
@@ -39,7 +39,7 @@ export default function Sidebar() {
       </div>
 
       <div>
-        <h4 className="sidebar-section-title">Categorias</h4>
+        <h4 className="sidebar-section-title">Brasil — DATASUS</h4>
         <nav className="sidebar-nav">
           {categories.map((cat) => (
             <Link
@@ -47,8 +47,22 @@ export default function Sidebar() {
               to={`/category/${cat.id}`}
               className={location.pathname === `/category/${cat.id}` ? 'active' : ''}
             >
-              <span className="nav-icon" style={{ fontSize: '0.7rem', fontWeight: 600, color: 'var(--gray-400)' }}>{cat.name.charAt(0)}</span>
               {cat.name}
+            </Link>
+          ))}
+        </nav>
+      </div>
+
+      <div>
+        <h4 className="sidebar-section-title">Global — OMS</h4>
+        <nav className="sidebar-nav">
+          {worldIndicators.map((ind) => (
+            <Link
+              key={ind.id}
+              to="/map"
+              className={location.pathname === '/map' ? 'active' : ''}
+            >
+              {ind.name_pt || ind.name}
             </Link>
           ))}
         </nav>
@@ -56,7 +70,7 @@ export default function Sidebar() {
 
       <div style={{ marginTop: 'auto', paddingTop: '12px', borderTop: '1px solid var(--border-default)' }}>
         <p style={{ fontSize: '0.667rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-          Fonte: DATASUS / Ministério da Saúde
+          Fontes: DATASUS / OMS
         </p>
       </div>
     </aside>
